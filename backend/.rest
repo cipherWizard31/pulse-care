@@ -1,0 +1,12 @@
+### Register a new hospital
+POST http://localhost:3000/api/hospitals
+Content-Type: application/json
+
+{
+    "name": "City Hospital",
+    "phone": "555-1234",
+    "address": "123 Spring St, Springfield",
+    "document_link": "http://example.com/documents/city_hospital.pdf",
+    "email": "test@example.com",
+    "password": "securepassword"
+}
