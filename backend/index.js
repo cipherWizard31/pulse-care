@@ -1,12 +1,11 @@
 const express = require('express');
 const app = express();
+const hospitalAPIRoutes = require('./routes/hospitalAPI');
 
 app.use(express.json());
 
-// Example route
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+//Hospital profile routes
+app.use('/api', hospitalAPIRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 3000;
