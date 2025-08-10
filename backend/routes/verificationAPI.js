@@ -44,3 +44,5 @@ router.get('/hospitals/approved', verifyToken, verifyUserRole('super_admin'), as
         res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 });
+
+module.exports = router;
