@@ -43,8 +43,6 @@ router.post('/hospitals/login', async (req, res) => {
     }   
 });
 
-
-
 // test route to check protected access
 router.get('/hospitals/test', verifyToken, verifyUserRole('hospital'), (req, res) => {
     res.status(200).json({ message: 'Protected route accessed successfully', role: req.user.role });
