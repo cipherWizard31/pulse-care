@@ -5,6 +5,7 @@ const superAdminAPIRoutes = require('./routes/super-adminAPI');
 const { verifyToken } = require('./middlewares/auth');
 const dotenv = require('dotenv');
 const verificationAPI = require('./routes/verificationAPI');
+const superAdminDashboardAPIRoutes = require('./routes/superAdmin-dashboardAPI');
 
 
 
@@ -20,6 +21,9 @@ app.use('/api', superAdminAPIRoutes);
 
 // Verification routes
 app.use('/api', verificationAPI);
+
+// Super Admin Dashboard routes
+app.use('/api', superAdminDashboardAPIRoutes);
 
 // token verification route
 app.get('/test', verifyToken, (req, res) => {

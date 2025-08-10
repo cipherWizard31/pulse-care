@@ -52,5 +52,19 @@ router.post('/super-admins', async (req, res) => {
     }
 });
 
+// delete a super-admin
+router.delete('/super-admins/profile', verifyToken, verifyUserRole('super_admin'), async (req, res) => {
+    const superAdminId = req.user.id;
+    try {
+        const [result] = await pool.query('DELETE FROM super_admins WHERE id = ?', [superAdminId]);
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'Super Admin not found' });
+        }
+        res.status(200).json({ message: 'Super Admin deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting super-admin:', error);
+        res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+});
 
 module.exports = router;
