@@ -3,15 +3,55 @@ POST http://localhost:3000/api/hospitals
 Content-Type: application/json
 
 {
-    "name": "City Hospital",
+    "name": "Alert Hospital",
     "phone": "555-1234",
     "address": "123 Spring St, Springfield",
     "document_link": "http://example.com/documents/city_hospital.pdf",
-    "email": "test@example.com",
+    "email": "test@test.com",
     "password": "securepassword"
 }
 
-### Get all hospitals
-GET http://localhost:3000/api/hospitals
+### Login a hospital
+POST http://localhost:3000/api/hospitals/login
+Content-Type: application/json
 
-###
+{
+    "email": "test@test.com",
+    "password": "securepassword"
+}
+
+### Protected route for hospitals
+GET http://localhost:3000/api/hospitals/test
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyX2FkbWluIiwiaWF0IjoxNzU0Nzg0NjIyLCJleHAiOjE3NTQ3ODgyMjJ9.HBQICwdvOuWaFgXEgD81NJ5SC9o0l6isJEMC_NUTEwc
+
+
+### create a new super admin profile
+POST http://localhost:3000/api/super-admins
+Content-Type: application/json
+
+{
+    "name": "Super Admin",
+    "phone": "555-5678",
+    "address": "456 Elm St, Springfield",
+    "email": "test@example.com",
+    "password": "supersecurepassword"
+}
+
+### Login a super admin
+POST http://localhost:3000/api/super-admins/login
+Content-Type: application/json
+
+{
+    "email": "test@example.com",
+    "password": "supersecurepassword"
+}
+
+### Protected route for super admins
+GET http://localhost:3000/api/super-admins/test
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzU0Nzg1ODE5LCJleHAiOjE3NTQ3ODk0MTl9.8CWH5VIvaiPJNYw_4VYetOVftXnNRNtMc9i-cpwULPQ
+
+
+### verifyToken route
+GET http://localhost:3000/test
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyX2FkbWluIiwiaWF0IjoxNzU0Nzg0NjIyLCJleHAiOjE3NTQ3ODgyMjJ9.HBQICwdvOuWaFgXEgD81NJ5SC9o0l6isJEMC_NUTEwc
+Content-Type: application/json
