@@ -55,3 +55,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6I
 GET http://localhost:3000/test
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyX2FkbWluIiwiaWF0IjoxNzU0Nzg0NjIyLCJleHAiOjE3NTQ3ODgyMjJ9.HBQICwdvOuWaFgXEgD81NJ5SC9o0l6isJEMC_NUTEwc
 Content-Type: application/json
+
+
+### get unverified hospitals
+GET http://localhost:3000/api/hospitals/unverified
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzU0Nzg4MzI5LCJleHAiOjE3NTQ3OTE5Mjl9.f3zZhQanCiD0cM9tcllBj6P6yCuyXPB0-iZx4cDd1og
+Content-Type: application/json
+
+### Approve a hospital
+POST http://localhost:3000/api/hospitals/accept/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzU0Nzg4MzI5LCJleHAiOjE3NTQ3OTE5Mjl9.f3zZhQanCiD0cM9tcllBj6P6yCuyXPB0-iZx4cDd1og
+Content-Type: application/json
+
+{
+    "id": 3
+}

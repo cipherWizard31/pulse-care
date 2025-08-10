@@ -61,6 +61,38 @@ router.post('/super-admins/login', async (req, res) => {
     }
   });
 
+
+// get all unverified hospitals
+router.get('/hospitals/unverified', verifyToken, verifyUserRole('super_admin'), async (req, res) => {
+    try {
+        const [hospitals] = await pool.query('SELECT * FROM hospitals WHERE isVerified = 0');
+        res.status(200).json(hospitals);
+    } catch (error) {
+        console.error('Error fetching unverified hospitals:', error);
+        res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+});
+
+// Accept a hospital registration request
+router.post('/hospitals/accept', verifyToken, verifyUserRole('super_admin'), async (req, res) => {
+    const hospitalId  = req.body.id;
+
+    try {
+        const [result] = await pool.query(
+            'UPDATE hospitals SET isVerified = 1 WHERE id = ?',
+            [hospitalId]
+        );
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'Hospital not found or already accepted' });
+        }
+        res.status(200).json({ message: 'Hospital registration accepted successfully' });
+    }
+    catch (error) {
+        console.error('Error accepting hospital registration:', error);
+        res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+});
+
 // Test route to check protected access
 router.get('/super-admins/test', verifyToken, verifyUserRole('super_admin'),  (req, res) => {
     res.status(200).json({ message: 'Protected route accessed successfully', role: req.user.role });
