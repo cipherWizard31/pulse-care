@@ -67,4 +67,19 @@ router.delete('/super-admins/profile', verifyToken, verifyUserRole('super_admin'
     }
 });
 
+// delete a hospital
+router.delete('/hospitals/:id', verifyToken, verifyUserRole('super_admin'), async (req, res) => {
+    const hospitalId = req.params.id;
+    try {
+        const [result] = await pool.query('DELETE FROM hospitals WHERE id = ?', [hospitalId]);
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'Hospital not found' });
+        }
+        res.status(200).json({ message: 'Hospital deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting hospital:', error);
+        res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+});
+
 module.exports = router;

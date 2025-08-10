@@ -79,3 +79,7 @@ Content-Type: application/json
 ### Delete a super admin
 DELETE http://localhost:3000/api/super-admins/profile
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QG5hdGFuLmNvbSIsImlhdCI6MTc1NDc5MjA2NiwiZXhwIjoxNzU0Nzk1NjY2fQ.QKo0bC-muo5qoO--lqZLFQd1rEpqbKV0NPYB5pU3wek
+
+### Delete a hospital
+DELETE http://localhost:3000/api/hospitals/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QG5hdGFuLmNvbSIsImlhdCI6MTc1NDc5MjA2NiwiZXhwIjoxNzU0Nzk1NjY2fQ.QKo0bC-muo5qoO--lqZLFQd1rEpqbKV0NPYB5pU3wek
