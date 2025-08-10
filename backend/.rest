@@ -63,10 +63,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6I
 Content-Type: application/json
 
 ### Approve a hospital
-POST http://localhost:3000/api/hospitals/accept/
+POST http://localhost:3000/api/hospitals/approve/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzU0Nzg4MzI5LCJleHAiOjE3NTQ3OTE5Mjl9.f3zZhQanCiD0cM9tcllBj6P6yCuyXPB0-iZx4cDd1og
 Content-Type: application/json
 
 {
     "id": 3
 }
+
+### Approved hospitals
+GET http://localhost:3000/api/hospitals/approved
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzU0Nzg4MzI5LCJleHAiOjE3NTQ3OTE5Mjl9.f3zZhQanCiD0cM9tcllBj6P6yCuyXPB0-iZx4cDd1og
+Content-Type: application/json

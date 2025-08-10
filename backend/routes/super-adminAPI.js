@@ -74,7 +74,7 @@ router.get('/hospitals/unverified', verifyToken, verifyUserRole('super_admin'), 
 });
 
 // Accept a hospital registration request
-router.post('/hospitals/accept', verifyToken, verifyUserRole('super_admin'), async (req, res) => {
+router.post('/hospitals/approve', verifyToken, verifyUserRole('super_admin'), async (req, res) => {
     const hospitalId  = req.body.id;
 
     try {
@@ -89,6 +89,17 @@ router.post('/hospitals/accept', verifyToken, verifyUserRole('super_admin'), asy
     }
     catch (error) {
         console.error('Error accepting hospital registration:', error);
+        res.status(500).json({ message: 'Internal server error', error: error.message });
+    }
+});
+
+// approved hospitals
+router.get('/hospitals/approved', verifyToken, verifyUserRole('super_admin'), async (req, res) => {
+    try {
+        const [hospitals] = await pool.query('SELECT * FROM hospitals WHERE isVerified = 1');
+        res.status(200).json(hospitals);
+    } catch (error) {
+        console.error('Error fetching approved hospitals:', error);
         res.status(500).json({ message: 'Internal server error', error: error.message });
     }
 });
