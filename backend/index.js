@@ -1,8 +1,6 @@
 const express = require('express');
 const app = express();
 const hospitalAPIRoutes = require('./routes/hospitalAPI');
-<<<<<<< refs/remotes/origin/Merga
-=======
 const superAdminAPIRoutes = require('./routes/super-adminAPI');
 const { verifyToken } = require('./middlewares/auth');
 const dotenv = require('dotenv');
@@ -15,15 +13,12 @@ const crudPatRoutes = require('./routes/crudPat');
 
 
 dotenv.config();
->>>>>>> local
 
 app.use(express.json());
 
 //Hospital profile routes
 app.use('/api', hospitalAPIRoutes);
 
-<<<<<<< refs/remotes/origin/Merga
-=======
 // super-admin profile routes
 app.use('/api', superAdminAPIRoutes);
 
@@ -41,7 +36,6 @@ app.get('/test', verifyToken, (req, res) => {
 });
 
 
->>>>>>> local
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
