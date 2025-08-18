@@ -6,8 +6,8 @@ Content-Type: application/json
     "name": "Test Hospital",
     "phone": "555-1234",
     "address": "123 Spring St, Springfield",
-    "document_link": "http://example.com/documents/city_hospital.pdf",
-    "email": "test@gmail.com",
+    "document_link": "http://example.com/city_hospital.pdf",
+    "email": "hospital@example.com",
     "password": "securepassword"
 }
 
@@ -28,12 +28,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6I
 ### create a new super admin profile
 POST http://localhost:3000/api/super-admins
 Content-Type: application/json
+Authentication: Bearer <token>
 
 {
     "name": "Super Admin #2",
     "phone": "555-5678",
     "address": "456 Elm St, Springfield",
-    "email": "test@natan.com",
+    "email": "superadmin@example.com",
     "password": "supersecurepassword"
 }
 
@@ -42,7 +43,7 @@ POST http://localhost:3000/api/super-admins/login
 Content-Type: application/json
 
 {
-    "email": "test@natan.com",
+    "email": "superadmin@example.com",
     "password": "supersecurepassword"
 }
 
@@ -59,12 +60,12 @@ Content-Type: application/json
 
 ### get unverified hospitals
 GET http://localhost:3000/api/hospitals/unverified
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QG5hdGFuLmNvbSIsImlhdCI6MTc1NDgxOTA4MSwiZXhwIjoxNzU0ODIyNjgxfQ.R5zniRdP6QO6y7oftvKbzp7RFCAqJnonZrRGnCH0z6Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzU1NTIwODkxLCJleHAiOjE3NTU1MjQ0OTF9.HBzJu8O3YbPcbsUPLR2c8uyVjzn8H2HWj2RakK_NtRA
 Content-Type: application/json
 
 ### Approve a hospital
 POST http://localhost:3000/api/hospitals/approve/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QG5hdGFuLmNvbSIsImlhdCI6MTc1NDgxOTA4MSwiZXhwIjoxNzU0ODIyNjgxfQ.R5zniRdP6QO6y7oftvKbzp7RFCAqJnonZrRGnCH0z6Y
+Authorization: Bearer <token>
 Content-Type: application/json
 
 {
@@ -73,13 +74,13 @@ Content-Type: application/json
 
 ### Approved hospitals
 GET http://localhost:3000/api/hospitals/approved
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QG5hdGFuLmNvbSIsImlhdCI6MTc1NDgxOTA4MSwiZXhwIjoxNzU0ODIyNjgxfQ.R5zniRdP6QO6y7oftvKbzp7RFCAqJnonZrRGnCH0z6Y
+Authorization: Bearer <token>
 Content-Type: application/json
 
 ### Delete a super admin
 DELETE http://localhost:3000/api/super-admins/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QG5hdGFuLmNvbSIsImlhdCI6MTc1NDgxOTA4MSwiZXhwIjoxNzU0ODIyNjgxfQ.R5zniRdP6QO6y7oftvKbzp7RFCAqJnonZrRGnCH0z6Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzU1NTIwODkxLCJleHAiOjE3NTU1MjQ0OTF9.HBzJu8O3YbPcbsUPLR2c8uyVjzn8H2HWj2RakK_NtRA
 
 ### Delete a hospital
 DELETE http://localhost:3000/api/hospitals/3
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QG5hdGFuLmNvbSIsImlhdCI6MTc1NDc5MjA2NiwiZXhwIjoxNzU0Nzk1NjY2fQ.QKo0bC-muo5qoO--lqZLFQd1rEpqbKV0NPYB5pU3wek
+Authorization: Bearer <token>

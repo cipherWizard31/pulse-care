@@ -48,11 +48,6 @@ router.post('/super-admins/login', async (req, res) => {
       res.status(200).json({
         message: 'Login successful',
         token,
-        superAdmin: {
-          id: superAdmin.id,
-          email: superAdmin.email,
-          name: superAdmin.name
-        }
       });
   
     } catch (err) {
