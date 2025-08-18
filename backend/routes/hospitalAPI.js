@@ -36,7 +36,7 @@ router.post('/hospitals/login', async (req, res) => {
             return res.status(401).json({ message: 'Invalid password' });
         }
         const token = jwt.sign({ id: hospital.id, role: 'hospital' }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.status(200).json({ message: 'Login successful', token, hospital: { id: hospital.id, name: hospital.name, phone: hospital.phone, address: hospital.address, document_link: hospital.document_link, email: hospital.email } });
+        res.status(200).json({ message: 'Login successful', token });
     } catch (error) {
         console.error('Error logging in hospital:', error);
         res.status(500).json({ message: 'Internal server error', error: error.message });
