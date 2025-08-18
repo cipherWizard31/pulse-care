@@ -6,6 +6,8 @@ const { verifyToken } = require('./middlewares/auth');
 const dotenv = require('dotenv');
 const verificationAPI = require('./routes/verificationAPI');
 const superAdminDashboardAPIRoutes = require('./routes/superAdmin-dashboardAPI');
+const crudPatRoutes = require('./routes/crudPat');
+
 
 
 
@@ -24,6 +26,9 @@ app.use('/api', verificationAPI);
 
 // Super Admin Dashboard routes
 app.use('/api', superAdminDashboardAPIRoutes);
+
+// CRUD Patient routes
+app.use('/api', crudPatRoutes);
 
 // token verification route
 app.get('/test', verifyToken, (req, res) => {
