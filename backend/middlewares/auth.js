@@ -22,34 +22,31 @@ const verifyToken = (req, res, next) => {
   });
 };
 
-// Middleware to check wether the user is in the company or employee table
-// This is used to determine the role of the user for RBAC
-const verifyUserTable = async (req, res, next) => {
+const verifyUserRole = (requiredRole) => {
+  return (req, res, next) => {
+    // 1. Check if user has role data
+    if (!req.user?.role) {
+      return res.status(403).json({
+        message: 'Role information missing',
+        details: 'User authentication data does not contain role information'
+      });
+    }
 
-  try {
-    const [companyRows] = await pool.query('SELECT id FROM company WHERE id = ?', [req.user.id]);
-    if (companyRows.length > 0) {
-      req.user.role = 'company';
-      return next();
+    // 2. Verify role matches required role
+    if (req.user.role !== requiredRole) {
+      return res.status(403).json({
+        message: 'Role mismatch error',
+        details: {
+          required: requiredRole,
+          actual: req.user.role,
+          suggestion: `This endpoint requires ${requiredRole} privileges`
+        }
+      });
     }
-    const [employeeRows] = await pool.query('SELECT id FROM patient WHERE id = ?', [req.user.id]);
-    if (employeeRows.length > 0) {
-      req.user.role = 'employee';
-      return next();
-    }
-    return res.status(403).json({ message: 'User role not found in any table' });
-  } catch (err) {
-    return res.status(500).json({ message: 'Database error during role check', error: err.message });
-  }
+
+    // 3. Role matches - proceed
+    next();
+  };
 };
 
-// Role check middleware for Role Based Access Control (RBAC)
-const requireRole = (role) => (req, res, next) => {
-  if (req.user?.role !== role) {
-    return res.status(403).json({ message: 'Access denied: role mismatch' });
-  }
-  next();
-};
-
-
-module.exports = { verifyToken, verifyUserTable, requireRole };
+module.exports = { verifyToken, verifyUserRole };

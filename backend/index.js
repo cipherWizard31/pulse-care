@@ -11,7 +11,6 @@ const crudPatRoutes = require('./routes/crudPat');
 
 
 
-
 dotenv.config();
 
 app.use(express.json());
@@ -27,6 +26,7 @@ app.use('/api', verificationAPI);
 
 // Super Admin Dashboard routes
 app.use('/api', superAdminDashboardAPIRoutes);
+
 // CRUD Patient routes
 app.use('/api', crudPatRoutes);
 

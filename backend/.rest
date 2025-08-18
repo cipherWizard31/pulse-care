@@ -3,15 +3,13 @@ POST http://localhost:3000/api/hospitals
 Content-Type: application/json
 
 {
-    "name": "City Hospital",
+    "name": "Test Hospital",
     "phone": "555-1234",
     "address": "123 Spring St, Springfield",
-    "document_link": "http://example.com/documents/city_hospital.pdf",
-    "email": "test@example.com",
+    "document_link": "http://example.com/city_hospital.pdf",
+    "email": "hospital@example.com",
     "password": "securepassword"
 }
-<<<<<<< refs/remotes/origin/Merga
-=======
 
 ### Login a hospital
 POST http://localhost:3000/api/hospitals/login
@@ -25,6 +23,7 @@ Content-Type: application/json
 ### Protected route for hospitals
 GET http://localhost:3000/api/hospitals/test
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyX2FkbWluIiwiaWF0IjoxNzU0Nzg0NjIyLCJleHAiOjE3NTQ3ODgyMjJ9.HBQICwdvOuWaFgXEgD81NJ5SC9o0l6isJEMC_NUTEwc
+
 
 
 ### create a new super admin profile
@@ -52,17 +51,16 @@ Content-Type: application/json
 GET http://localhost:3000/api/super-admins/test
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzU0Nzg1ODE5LCJleHAiOjE3NTQ3ODk0MTl9.8CWH5VIvaiPJNYw_4VYetOVftXnNRNtMc9i-cpwULPQ
 
-
 ### verifyToken route
 GET http://localhost:3000/test
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyX2FkbWluIiwiaWF0IjoxNzU0Nzg0NjIyLCJleHAiOjE3NTQ3ODgyMjJ9.HBQICwdvOuWaFgXEgD81NJ5SC9o0l6isJEMC_NUTEwc
-Content-Type: application/json
+
 
 
 ### get unverified hospitals
 GET http://localhost:3000/api/hospitals/unverified
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzU0Nzg4MzI5LCJleHAiOjE3NTQ3OTE5Mjl9.f3zZhQanCiD0cM9tcllBj6P6yCuyXPB0-iZx4cDd1og
-Content-Type: application/json
+
 
 ### Approve a hospital
 POST http://localhost:3000/api/hospitals/approve/
@@ -74,7 +72,7 @@ Content-Type: application/json
 }
 
 ### Approved hospitals
-GET http://localhost:3000/api/hospitals/approved
+GET http://localhost:3000/api/hospitals/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIiwiaWF0IjoxNzU0Nzg4MzI5LCJleHAiOjE3NTQ3OTE5Mjl9.f3zZhQanCiD0cM9tcllBj6P6yCuyXPB0-iZx4cDd1og
 Content-Type: application/json
 
@@ -137,4 +135,11 @@ Content-Type: application/json
 ### Delete a Medical Record
 DELETE http://localhost:3000/api/patients/<PATIENT_ID>/records/<RECORD_ID>
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJ0ZXN0QG5hdGFuLmNvbSIsImlhdCI6MTc1NDc5MjA2NiwiZXhwIjoxNzU0Nzk1NjY2fQ.QKo0bC-muo5qoO--lqZLFQd1rEpqbKV0NPYB5pU3wek
->>>>>>> local
+
+=======
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6InN1cGVyX2FkbWluIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwiaWF0IjoxNzU1NTIwODkxLCJleHAiOjE3NTU1MjQ0OTF9.HBzJu8O3YbPcbsUPLR2c8uyVjzn8H2HWj2RakK_NtRA
+
+### Delete a hospital
+DELETE http://localhost:3000/api/hospitals/3
+Authorization: Bearer <token>
+
