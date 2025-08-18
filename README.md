@@ -1,4 +1,4 @@
-# PulseCare – Project Documentation
+# PulseCare – Group 2 Documentation
 
 ## 1. Overview
 
